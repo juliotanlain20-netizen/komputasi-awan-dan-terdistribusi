@@ -72,15 +72,15 @@ Oleh karena itu, Hybrid Cloud lebih tepat karena menggabungkan keamanan Private 
 
 ### Skenario Tandingan
 
-    Skenario: Bagaimana jika instansi daerah tidak punya infrastruktur private cloud sendiri?
+Skenario: Bagaimana jika instansi daerah tidak punya infrastruktur private cloud sendir
 
-    Jawaban:
+Jawaban:
 
-    Instansi daerah tidak perlu membangun private cloud sendiri. Private Cloud dalam sistem ini adalah platform nasional milik negara yang dipakai bersama antarinstansi pemerintah (resource pooling). Dukcapil daerah, kepolisian, dan instansi lain cukup mengakses layanan melalui API Gateway dengan identitas dua arah (mTLS) dan jaringan khusus pemerintah, sehingga data inti kependudukan tetap tersimpan di pusat dan tidak tersebar di server daerah.
+Instansi daerah tidak perlu membangun private cloud sendiri. Private Cloud dalam sistem ini adalah platform nasional milik negara yang dipakai bersama antarinstansi pemerintah (resource pooling). Dukcapil daerah, kepolisian, dan instansi lain cukup mengakses layanan melalui API Gateway dengan identitas dua arah (mTLS) dan jaringan khusus pemerintah, sehingga data inti kependudukan tetap tersimpan di pusat dan tidak tersebar di server daerah.
 
-    Pendekatan ini memiliki keuntungan, yaitu kualitas keamanan seragam, karena data tidak tersebar di banyak server daerah yang tingkat pengamanannya berbeda-beda. Biaya yang dikeluarkan juga lebih hemat, karena daerah tidak perlu membeli server dan merekrut tenaga ahli sendiri. Yang terakhir, akses tetap terkontrol, karena tiap instansi mendapat hak dan kuota sesuai kebutuhannya, dan setiap akses tercatat.
+Pendekatan ini memiliki keuntungan, yaitu kualitas keamanan seragam, karena data tidak tersebar di banyak server daerah yang tingkat pengamanannya berbeda-beda. Biaya yang dikeluarkan juga lebih hemat, karena daerah tidak perlu membeli server dan merekrut tenaga ahli sendiri. Yang terakhir, akses tetap terkontrol, karena tiap instansi mendapat hak dan kuota sesuai kebutuhannya, dan setiap akses tercatat.
 
-    Untuk daerah dengan jaringan kurang stabil, petugas memakai antrean luring (offline queue), yaitu permintaan disimpan sementara di perangkat dan dikirim otomatis ketika jaringan pulih. Data yang tersimpan sementara hanya data minimal dan terenkripsi, lalu dihapus setelah data terkirim. 
+Untuk daerah dengan jaringan kurang stabil, petugas memakai antrean luring (offline queue), yaitu permintaan disimpan sementara di perangkat dan dikirim otomatis ketika jaringan pulih. Data yang tersimpan sementara hanya data minimal dan terenkripsi, lalu dihapus setelah data terkirim. 
 
 ## Struktur Submission
 
