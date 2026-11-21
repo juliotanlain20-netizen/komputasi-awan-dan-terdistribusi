@@ -50,17 +50,17 @@ Pemerintah ingin membangun **Sistem Data Kependudukan** (nama, NIK, alamat, data
 
 Penggunaan Hybrid Cloud memiliki beberapa risiko yang perlu diperhatikan agar keamanan data dan ketersediaan sistem tetap terjaga.
 
-    1. Kebocoran data saat sinkronisasi Private Cloud dan Public Cloud.
+a. Kebocoran data saat sinkronisasi Private Cloud dan Public Cloud.
 
-    Risiko ini dapat terjadi apabila terdapat kesalahan dalam proses pemindahan atau pertukaran data antara kedua lingkungan cloud. Data sensitif seperti NIK, alamat, dan biometrik berpotensi terekspos ke pihak yang tidak berwenang.  Mitigasinya adalah membatasi sinkronisasi hanya untuk data non-sensitif, menggunakan enkripsi pada proses komunikasi, serta memastikan seluruh data inti tetap disimpan dan diproses di Private Cloud.
+Risiko ini dapat terjadi apabila terdapat kesalahan dalam proses pemindahan atau pertukaran data antara kedua lingkungan cloud. Data sensitif seperti NIK, alamat, dan biometrik berpotensi terekspos ke pihak yang tidak berwenang.  Mitigasinya adalah membatasi sinkronisasi hanya untuk data non-sensitif, menggunakan enkripsi pada proses komunikasi, serta memastikan seluruh data inti tetap disimpan dan diproses di Private Cloud.
 
-    2. Serangan siber melalui Public Cloud.
+b. Serangan siber melalui Public Cloud.
 
-    Portal yang dapat diakses melalui internet berpotensi menjadi sasaran serangan seperti DDoS dan eksploitasi celah keamanan aplikasi. Serangan tersebut dapat mengganggu layanan atau menjadi celah untuk menyerang sistem inti. Mitigasinya adalah menggunakan Web Application Firewall (WAF), perlindungan DDoS, autentikasi mTLS, serta pembatasan jumlah permintaan (rate limiting).
+Portal yang dapat diakses melalui internet berpotensi menjadi sasaran serangan seperti DDoS dan eksploitasi celah keamanan aplikasi. Serangan tersebut dapat mengganggu layanan atau menjadi celah untuk menyerang sistem inti. Mitigasinya adalah menggunakan Web Application Firewall (WAF), perlindungan DDoS, autentikasi mTLS, serta pembatasan jumlah permintaan (rate limiting).
 
-    3. Gangguan koneksi antara Private Cloud dan Public Cloud.
+c. Gangguan koneksi antara Private Cloud dan Public Cloud.
 
-    Gangguan jaringan dapat menyebabkan portal cek status tidak dapat terhubung dengan API verifikasi di Private Cloud sehingga layanan menjadi lambat atau tidak tersedia. Mitigasinya adalah menyediakan jaringan cadangan, melakukan pemantauan koneksi secara berkala, serta menyiapkan mekanisme pemulihan otomatis agar layanan tetap dapat berjalan ketika terjadi gangguan.
+Gangguan jaringan dapat menyebabkan portal cek status tidak dapat terhubung dengan API verifikasi di Private Cloud sehingga layanan menjadi lambat atau tidak tersedia. Mitigasinya adalah menyediakan jaringan cadangan, melakukan pemantauan koneksi secara berkala, serta menyiapkan mekanisme pemulihan otomatis agar layanan tetap dapat berjalan ketika terjadi gangguan.
 
 **4. Perbandingan dengan Alternatif yang Ditolak**
 
@@ -69,7 +69,8 @@ Alternatif yang ditolak adalah Public Cloud murni. Model ini sebenarnya memiliki
 Penggunaan Public Cloud murni dapat menimbulkan risiko terkait kendali pemerintah terhadap infrastruktur dan pengelolaan data. Meskipun penyedia layanan memiliki server di Indonesia, hal tersebut tidak otomatis menjamin bahwa seluruh infrastruktur berada dalam kendali penuh negara.
 
 Oleh karena itu, Hybrid Cloud lebih tepat karena menggabungkan keamanan Private Cloud dan fleksibilitas Public Cloud. Data sensitif tetap disimpan dan diproses di Private Cloud, sedangkan Public Cloud digunakan secara terbatas untuk layanan non-sensitif yang membutuhkan skalabilitas tinggi.
-    ### Skenario Tandingan
+
+### Skenario Tandingan
 
     Skenario: Bagaimana jika instansi daerah tidak punya infrastruktur private cloud sendiri?
 
