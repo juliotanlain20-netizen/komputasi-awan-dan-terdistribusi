@@ -46,9 +46,29 @@ Pemerintah ingin membangun **Sistem Data Kependudukan** (nama, NIK, alamat, data
     | Portal cek status warga | Public Cloud (server di Indonesia) | IaaS | Bebannya bisa melonjak tajam pada waktu tertentu dan hanya menampilkan status terbatas. Menggunakan IaaS di Public Cloud memberi tim kontrol penuh atas konfigurasi keamanan, caching/antrean, serta aturan auto-scaling infrastruktur tanpa menyimpan data rahasia. |
     | Email dan ticketing pegawai | Penyedia layanan luar (vendor SaaS) | SaaS | Aplikasi umum yang tidak berisi data kependudukan, jadi cukup memakai aplikasi siap pakai. Aplikasi hanya digunakan untuk koordinasi internal dan administrasi umum pegawai Dukcapil. Data pribadi warga tidak boleh dilampirkan atau diproses pada layanan ini agar tidak melanggar UU PDP. |
 
-3. Jelaskan **minimal 2 risiko spesifik** dari pilihan kalian dan mitigasinya (mis. jika Hybrid Cloud dipilih: risiko sinkronisasi data antara private & public segment).
-4. Bandingkan singkat dengan **satu alternatif yang kalian tolak** — kenapa alternatif itu kurang tepat (mis. kenapa Public Cloud murni ditolak, atau kenapa Private Cloud murni dianggap kurang skalabel).
+**3. Risiko dan Mitigasi**
 
+Penggunaan Hybrid Cloud memiliki beberapa risiko yang perlu diperhatikan agar keamanan data dan ketersediaan sistem tetap terjaga.
+
+    1. Kebocoran data saat sinkronisasi Private Cloud dan Public Cloud.
+
+    Risiko ini dapat terjadi apabila terdapat kesalahan dalam proses pemindahan atau pertukaran data antara kedua lingkungan cloud. Data sensitif seperti NIK, alamat, dan biometrik berpotensi terekspos ke pihak yang tidak berwenang.  Mitigasinya adalah membatasi sinkronisasi hanya untuk data non-sensitif, menggunakan enkripsi pada proses komunikasi, serta memastikan seluruh data inti tetap disimpan dan diproses di Private Cloud.
+
+    2. Serangan siber melalui Public Cloud.
+
+    Portal yang dapat diakses melalui internet berpotensi menjadi sasaran serangan seperti DDoS dan eksploitasi celah keamanan aplikasi. Serangan tersebut dapat mengganggu layanan atau menjadi celah untuk menyerang sistem inti. Mitigasinya adalah menggunakan Web Application Firewall (WAF), perlindungan DDoS, autentikasi mTLS, serta pembatasan jumlah permintaan (rate limiting).
+
+    3. Gangguan koneksi antara Private Cloud dan Public Cloud.
+
+    Gangguan jaringan dapat menyebabkan portal cek status tidak dapat terhubung dengan API verifikasi di Private Cloud sehingga layanan menjadi lambat atau tidak tersedia. Mitigasinya adalah menyediakan jaringan cadangan, melakukan pemantauan koneksi secara berkala, serta menyiapkan mekanisme pemulihan otomatis agar layanan tetap dapat berjalan ketika terjadi gangguan.
+
+**4. Perbandingan dengan Alternatif yang Ditolak**
+
+Alternatif yang ditolak adalah Public Cloud murni. Model ini sebenarnya memiliki keunggulan dalam hal skalabilitas, kemudahan pengelolaan sumber daya, dan kemampuan menangani lonjakan akses secara cepat. Namun, model ini kurang tepat untuk sistem data kependudukan karena menyimpan informasi yang sangat sensitif, seperti nama, NIK, alamat, dan data biometrik warga negara.
+
+Penggunaan Public Cloud murni dapat menimbulkan risiko terkait kendali pemerintah terhadap infrastruktur dan pengelolaan data. Meskipun penyedia layanan memiliki server di Indonesia, hal tersebut tidak otomatis menjamin bahwa seluruh infrastruktur berada dalam kendali penuh negara.
+
+Oleh karena itu, Hybrid Cloud lebih tepat karena menggabungkan keamanan Private Cloud dan fleksibilitas Public Cloud. Data sensitif tetap disimpan dan diproses di Private Cloud, sedangkan Public Cloud digunakan secara terbatas untuk layanan non-sensitif yang membutuhkan skalabilitas tinggi.
     ### Skenario Tandingan
 
     Skenario: Bagaimana jika instansi daerah tidak punya infrastruktur private cloud sendiri?
