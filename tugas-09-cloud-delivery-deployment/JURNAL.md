@@ -1,25 +1,25 @@
 # Jurnal Proses — Tugas 9
 
 ## Diskusi deployment model
--Kelompok mempertimbangkan empat pilihan Deployment Model, yaitu Public Cloud, Private Cloud, Hybrid Cloud, dan Community Cloud.
+- Kelompok mempertimbangkan empat pilihan Deployment Model, yaitu Public Cloud, Private Cloud, Hybrid Cloud, dan Community Cloud.
 
--Public Cloud dipertimbangkan karena memiliki skalabilitas tinggi, tetapi kurang sesuai untuk menyimpan data kependudukan yang sangat sensitif karena kendali infrastruktur tidak sepenuhnya berada pada pemerintah.
+- Public Cloud dipertimbangkan karena memiliki skalabilitas tinggi, tetapi kurang sesuai untuk menyimpan data kependudukan yang sangat sensitif karena kendali infrastruktur tidak sepenuhnya berada pada pemerintah.
 
--Private Cloud memberikan kendali dan keamanan data yang lebih besar, tetapi membutuhkan perencanaan kapasitas yang baik untuk menghadapi lonjakan akses dari ribuan instansi.
+- Private Cloud memberikan kendali dan keamanan data yang lebih besar, tetapi membutuhkan perencanaan kapasitas yang baik untuk menghadapi lonjakan akses dari ribuan instansi.
 
--Community Cloud memungkinkan penggunaan infrastruktur bersama oleh beberapa organisasi dengan kepentingan yang sama, tetapi kurang fleksibel untuk kebutuhan sistem kependudukan nasional.
+- Community Cloud memungkinkan penggunaan infrastruktur bersama oleh beberapa organisasi dengan kepentingan yang sama, tetapi kurang fleksibel untuk kebutuhan sistem kependudukan nasional.
 
--Akhirnya, kelompok memilih Hybrid Cloud karena menggabungkan keamanan Private Cloud dan fleksibilitas Public Cloud. Data inti kependudukan tetap disimpan dan diproses di Private Cloud, sedangkan Public Cloud digunakan secara terbatas untuk layanan non-sensitif yang membutuhkan skalabilitas tinggi.
+- Akhirnya, kelompok memilih Hybrid Cloud karena menggabungkan keamanan Private Cloud dan fleksibilitas Public Cloud. Data inti kependudukan tetap disimpan dan diproses di Private Cloud, sedangkan Public Cloud digunakan secara terbatas untuk layanan non-sensitif yang membutuhkan skalabilitas tinggi.
 ## Diskusi service model per komponen
 - Kelompok menentukan Service Model berdasarkan kebutuhan kendali, keamanan, dan pengelolaan setiap komponen sistem.
 
--IaaS dipilih untuk database inti kependudukan dan mesin pencocokan biometrik karena kedua komponen tersebut menangani data sangat sensitif sehingga membutuhkan kendali infrastruktur dan konfigurasi keamanan yang lebih besar.
+- IaaS dipilih untuk database inti kependudukan dan mesin pencocokan biometrik karena kedua komponen tersebut menangani data sangat sensitif sehingga membutuhkan kendali infrastruktur dan konfigurasi keamanan yang lebih besar.
 
--PaaS dipilih untuk Gerbang API, WAF, dan API verifikasi NIK karena memudahkan pengelolaan aplikasi, integrasi antarsistem, serta penyesuaian kapasitas ketika terjadi lonjakan akses.
+- PaaS dipilih untuk Gerbang API, WAF, dan API verifikasi NIK karena memudahkan pengelolaan aplikasi, integrasi antarsistem, serta penyesuaian kapasitas ketika terjadi lonjakan akses.
 
--PaaS juga dipilih untuk portal cek status warga di Public Cloud karena mendukung pengelolaan aplikasi dan auto-scaling. Portal hanya menangani tampilan dan konten non-sensitif, sedangkan pengecekan data individual tetap diproses melalui Private Cloud.
+- PaaS juga dipilih untuk portal cek status warga di Public Cloud karena mendukung pengelolaan aplikasi dan auto-scaling. Portal hanya menangani tampilan dan konten non-sensitif, sedangkan pengecekan data individual tetap diproses melalui Private Cloud.
 
--SaaS dipilih untuk email dan ticketing pegawai karena merupakan layanan pendukung administrasi yang tidak memerlukan pengelolaan infrastruktur sendiri. Layanan tersebut tidak boleh digunakan untuk menyimpan atau mengirim data pribadi warga.
+- SaaS dipilih untuk email dan ticketing pegawai karena merupakan layanan pendukung administrasi yang tidak memerlukan pengelolaan infrastruktur sendiri. Layanan tersebut tidak boleh digunakan untuk menyimpan atau mengirim data pribadi warga.
 
 ## Log Penggunaan AI (Level 2)
 
