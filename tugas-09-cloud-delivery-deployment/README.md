@@ -17,9 +17,9 @@ Pemerintah ingin membangun **Sistem Data Kependudukan** (nama, NIK, alamat, data
 
     Jawaban:
 
-    Deployment Model yang paling tepat untuk sistem ini adalah Hybrid Cloud. Data inti kependudukan disimpan di Private Cloud milik negara, sedangkan Public Cloud (server di Indonesia) hanya dipakai untuk bagian yang tidak menyimpan data rahasia, seperti portal cek status, dan menjadi tempat kapasitas tambahan saat akses melonjak.
+    Deployment Model yang paling tepat untuk sistem ini adalah Hybrid Cloud. Seluruh data inti kependudukan meliputi nama, NIK, alamat, hingga data biometrik disimpan di Private Cloud yang dikendalikan penuh negara (memenuhi UU Perlindungan Data Pribadi), sedangkan Public Cloud (dengan server di Indonesia) hanya dipakai untuk bagian yang tidak menyimpan data rahasia, seperti portal cek status, dan menjadi tempat kapasitas tambahan saat akses melonjak.
 
-    Hybrid Cloud dipilih karena sistem data kependudukan memiliki dua kebutuhan yang saling bertabrakan, yaitu kerahasiaan dan skalabilitas. Sistem ini membutuhakn kerahasiaan karena NIK dan data biometrik adalah data pribadi yang sangat sensitif dan tidak boleh berada di infrastruktur yang tidak dikendalikan penuh oleh negara. Sedangkan, skalabilitas dibutuhkan karena akses akan melonjak saat pemilu dan pendaftaran sekolah, dan sistem tidak boleh down. Hybrid Cloud memenuhi kedua kebutuhan tersebut.
+    Hybrid Cloud dipilih karena sistem data kependudukan memiliki dua kebutuhan yang saling bertabrakan, yaitu kerahasiaan dan skalabilitas. Sistem ini membutuhkan kerahasiaan tingkat tinggi karena NIK dan data biometrik merupakan data pribadi sensitif yang tidak boleh berada di infrastruktur di luar kendali penuh negara untuk mencegah terjadinya penyalahgunaan serta mematuhi UU Perlindungan Data Pribadi (UU PDP). Di sisi lain, skalabilitas tinggi dibutuhkan karena sistem diakses oleh ribuan instansi seperti Dukcapil daerah, kepolisian, dan perbankan untuk verifikasi KYC dengan lonjakan trafik drastis saat musim pemilu maupun pendaftaran sekolah sehingga layanan tidak boleh down. Dengan memisahkan penyimpanan data sensitif di Private Cloud dan mengalirkan beban puncak non-sensitif ke Public Cloud, negara tetap memegang kendali penuh atas data warga tanpa mengorbankan ketersediaan layanan.
 
     Alasan berdasarkan karakteristik NIST:
     | Karakteristik NIST | Kerahasiaan | Skalabilitas | Penerapan di Hybrid |
@@ -41,10 +41,10 @@ Pemerintah ingin membangun **Sistem Data Kependudukan** (nama, NIK, alamat, data
     Berikut komponen sistem dan service model yang direkomendasikan:
     | Komponen | Lokasi | Service Model | Alasan |
     |---|---|---|---|
-    | Database inti kependudukan (termasuk biometrik) | Private Cloud | IaaS | Menyimpan NIK dan biometrik yang paling rahasia, sehingga negara perlu mengendalikan penuh sistem operasi, pengamanan, enkripsi, dan kuncinya. |
+    | Database inti kependudukan (termasuk biometrik) | Private Cloud | IaaS | Menyimpan data pribadi yang paling rahasia (dilindungi UU PDP), sehingga negara perlu mengendalikan penuh sistem operasi, pengamanan, enkripsi, dan kuncinya tanpa ketergantungan pada lapisan abstraksi pihak ketiga. |
     | API verifikasi NIK | Private Cloud | PaaS | Komponen ini dipakai ribuan instansi dan bank. Platform siap pakai memudahkan penambahan kapasitas saat akses melonjak, sementara tim cukup mengurus aplikasi dan konfigurasinya. |
     | Portal cek status warga | Public Cloud (server di Indonesia) | IaaS | Bebannya bisa melonjak tajam pada waktu tertentu dan hanya menampilkan status terbatas. Menggunakan IaaS di Public Cloud memberi tim kontrol penuh atas konfigurasi keamanan, caching/antrean, serta aturan auto-scaling infrastruktur tanpa menyimpan data rahasia. |
-    | Email dan ticketing pegawai | Penyedia layanan luar (vendor SaaS) | SaaS | Aplikasi umum yang tidak berisi data kependudukan, jadi cukup memakai aplikasi siap pakai. Data warga tidak boleh dilampirkan atau diproses pada layanan ini. |
+    | Email dan ticketing pegawai | Penyedia layanan luar (vendor SaaS) | SaaS | Aplikasi umum yang tidak berisi data kependudukan, jadi cukup memakai aplikasi siap pakai. Aplikasi hanya digunakan untuk koordinasi internal dan administrasi umum pegawai Dukcapil. Data pribadi warga tidak boleh dilampirkan atau diproses pada layanan ini agar tidak melanggar UU PDP. |
 
 3. Jelaskan **minimal 2 risiko spesifik** dari pilihan kalian dan mitigasinya (mis. jika Hybrid Cloud dipilih: risiko sinkronisasi data antara private & public segment).
 4. Bandingkan singkat dengan **satu alternatif yang kalian tolak** — kenapa alternatif itu kurang tepat (mis. kenapa Public Cloud murni ditolak, atau kenapa Private Cloud murni dianggap kurang skalabel).
